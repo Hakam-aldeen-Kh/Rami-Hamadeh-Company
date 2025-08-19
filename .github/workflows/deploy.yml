@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build & Export
+      - name: Build project
         run: npm run deploy
 
       - name: Deploy to Hostinger via FTP
@@ -30,5 +30,5 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: out
+          local-dir: .next/output/static 
           server-dir: /public_html
