@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+const launchDate = new Date("2025-09-18T00:00:00"); // set your target date here
 
 const ComingSoon = () => {
   const [email, setEmail] = useState("");
@@ -10,10 +11,6 @@ const ComingSoon = () => {
     minutes: 0,
     seconds: 0,
   });
-
-  // Set target launch date (30 days from now)
-  const launchDate = new Date();
-  launchDate.setDate(launchDate.getDate() + 30);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -29,6 +26,9 @@ const ComingSoon = () => {
           minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((distance % (1000 * 60)) / 1000),
         });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        clearInterval(timer);
       }
     }, 1000);
 
@@ -115,7 +115,7 @@ const ComingSoon = () => {
           </div>
 
           {/* Email Subscription */}
-          <div className="mb-12 animate-slide-up-delay">
+          {/* <div className="mb-12 animate-slide-up-delay">
             <div className="max-w-md mx-auto">
               <h3 className="text-xl font-semibold text-white mb-4">
                 Be the first to know when we launch
@@ -145,10 +145,10 @@ const ComingSoon = () => {
                 </div>
               )}
             </div>
-          </div>
+          </div> */}
 
           {/* Features Preview */}
-          <div className="mb-12 animate-fade-in-delay-2">
+          {/* <div className="mb-12 animate-fade-in-delay-2">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
               {[
                 {
@@ -179,10 +179,10 @@ const ComingSoon = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Social Links */}
-          <div className="animate-fade-in-delay-3">
+          {/* <div className="animate-fade-in-delay-3">
             <p className="text-white/80 mb-6">Follow us for updates</p>
             <div className="flex justify-center space-x-6">
               {[
@@ -200,7 +200,7 @@ const ComingSoon = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
