@@ -1,5 +1,37 @@
 @import 'tailwindcss';
 
+/* Add custom container as a global utility */
+@layer utilities {
+  .container {
+    @apply w-full mx-auto px-6; /* base: full width, centered, padding left/right */
+
+    /* max-width like your old CSS (≈1200px design grid) */
+    max-width: 1200px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    .container {
+      padding-left: 1rem;  /* ≈16px */
+      padding-right: 1rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding-left: 1.5rem; /* ≈24px */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      padding-left: 2rem; /* ≈32px */
+      padding-right: 2rem;
+    }
+  }
+}
+
 /* Keyframes */
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(20px); }
