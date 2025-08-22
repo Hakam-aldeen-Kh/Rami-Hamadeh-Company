@@ -1,1 +1,21 @@
 @import 'tailwindcss';
+
+/* Keyframes */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Utility classes (no styled-jsx) */
+.fade-in { animation: fade-in 0.8s ease-out; }
+.fade-in-delay { animation: fade-in 0.8s ease-out 0.3s both; }
+.slide-up { animation: slide-up 0.8s ease-out 0.2s both; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .fade-in-delay, .slide-up { animation: none !important; }
+}
