@@ -7,48 +7,44 @@ const COMPANY_NAME = "Rami Hamadeh Company";
 const DESCRIPTION =
   "We’re crafting innovative digital solutions. Be the first to know when we launch.";
 const OG_IMAGE = "/images/rami-hamadeh-logo.png";
-const LAUNCH_ISO = "2025-09-18T00:00:00Z";
+const LAUNCH_ISO = "2025-09-18T00:00:00Z"; // keep for JSON-LD
 
-export const revalidate = 3600;
+export const revalidate = 3600; // optional
 
-export async function generateMetadata(): Promise<Metadata> {
-  const launched = Date.now() >= new Date(LAUNCH_ISO).getTime();
-  const base: Metadata = {
+export const metadata: Metadata = {
+  title: `Coming Soon – ${COMPANY_NAME}`,
+  description: DESCRIPTION,
+  alternates: { canonical: "/coming-soon" },
+  openGraph: {
+    type: "website",
+    url: `${SITE_URL}/coming-soon`,
+    siteName: COMPANY_NAME,
     title: `Coming Soon – ${COMPANY_NAME}`,
     description: DESCRIPTION,
-    alternates: { canonical: "/coming-soon" },
-    openGraph: {
-      type: "website",
-      url: `${SITE_URL}/coming-soon`,
-      siteName: COMPANY_NAME,
-      title: `Coming Soon – ${COMPANY_NAME}`,
-      description: DESCRIPTION,
-      images: [
-        {
-          url: OG_IMAGE,
-          width: 1200,
-          height: 630,
-          alt: `${COMPANY_NAME} – Coming Soon`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `Coming Soon – ${COMPANY_NAME}`,
-      description: DESCRIPTION,
-      images: [OG_IMAGE],
-    },
-    robots: {
-      index: launched, // noindex before launch; index after
-      follow: true,
-      googleBot: {
-        index: launched,
-        follow: true,
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: `${COMPANY_NAME} – Coming Soon`,
       },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Coming Soon – ${COMPANY_NAME}`,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
     },
-  };
-  return base;
-}
+  },
+};
 
 export default function Page() {
   const jsonLd = {
