@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/common/Header";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -15,7 +16,7 @@ const DESCRIPTION = "Showcase of our projects, case studies, and services.";
 const OG_IMAGE = "/images/rami-hamadeh-logo.png";
 
 export const metadata: Metadata = {
-    icons: "/favicon.ico",
+  icons: "/favicon.ico",
   metadataBase: new URL(SITE_URL),
   title: {
     default: COMPANY_NAME,
@@ -67,7 +68,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <main>
+          <Header />
+          {children}
+        </main>
       </body>
     </html>
   );

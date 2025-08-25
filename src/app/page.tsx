@@ -1,6 +1,11 @@
-// app/page.tsx
-import { redirect } from "next/navigation";
+import HomePage from "../components/pages/home/index";
 
-export default function HomePage() {
-  redirect("/coming-soon"); // this immediately redirects
-}
+const page = () => {
+  return (
+    <>
+      <HomePage />
+    </>
+  );
+};
+
+export default page;
